@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.image.*?>
@@ -17,9 +18,40 @@
       </ImageView>
       <Pane opacity="0.56" prefHeight="798.0" prefWidth="1320.0" style="-fx-background-color: black;">
          <children>
-            <Pane layoutX="410.0" layoutY="152.0" prefHeight="572.0" prefWidth="822.0" style="-fx-background-color: FFFFFF;">
+            <Pane layoutX="249.0" layoutY="113.0" prefHeight="572.0" prefWidth="822.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 15; -fx-opacity: 100;">
                <children>
-                  <Button layoutX="238.0" layoutY="331.0" mnemonicParsing="false" onAction="#showRegister" prefHeight="158.0" prefWidth="346.0" text="Button" />
+                  <Label layoutX="302.0" layoutY="26.0" text="Login" textFill="#191f31">
+                     <font>
+                        <Font name="System Bold" size="80.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="126.0" layoutY="161.0" text="Email">
+                     <font>
+                        <Font name="System Bold" size="35.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="126.0" layoutY="286.0" text="Password">
+                     <font>
+                        <Font name="System Bold" size="35.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="126.0" layoutY="220.0" prefHeight="45.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 5; -fx-border-color: #1B263D;" styleClass="txtFieldEmail" />
+                  <PasswordField layoutX="126.0" layoutY="345.0" prefHeight="45.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 5; -fx-border-color: #1B263D;" />
+                  <Button layoutX="126.0" layoutY="433.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="600.0" style="-fx-background-color: #0F172C; -fx-text-fill: #ffffff; -fx-background-radius: 25px;" text="Log In" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="158.0" layoutY="516.0" text="Don't you have a account?">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Hyperlink layoutX="443.0" layoutY="512.0" text="Create account" textFill="#243054">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Hyperlink>
                </children>
             </Pane>
          </children>
