@@ -1,14 +1,23 @@
 package com.example.insanebank;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+
+import java.io.IOException;
 
 public class HomeController {
     @FXML
-    private Label welcomeText;
+    void showGnancias(ActionEvent event) throws IOException {
+        Validacion.cambiarVentana(event, "ganancias-view");
+    }
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    void showLogn(ActionEvent event) throws IOException {
+        Validacion.cambiarVentana(event, "login-view");
+    }
+
+    @FXML
+    void showRgst(ActionEvent event) throws IOException {
+        Validacion.cambiarVentana(event, "register-view");
     }
 }
