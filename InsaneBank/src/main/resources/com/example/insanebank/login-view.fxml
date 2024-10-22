@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -18,7 +20,7 @@
       </ImageView>
       <Pane opacity="0.56" prefHeight="798.0" prefWidth="1320.0" style="-fx-background-color: black;">
          <children>
-            <Pane layoutX="249.0" layoutY="113.0" prefHeight="572.0" prefWidth="822.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 15; -fx-opacity: 100;">
+            <Pane layoutX="249.0" layoutY="113.0" prefHeight="572.0" prefWidth="822.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 15;">
                <children>
                   <Label layoutX="302.0" layoutY="26.0" text="Login" textFill="#191f31">
                      <font>
@@ -41,6 +43,9 @@
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Label layoutX="158.0" layoutY="516.0" text="Don't you have a account?">
                      <font>
@@ -54,6 +59,11 @@
                   </Hyperlink>
                </children>
             </Pane>
+            <Button layoutX="1098.0" layoutY="14.0" mnemonicParsing="false" styleClass="class-button-tab" stylesheets="@css/style.css" text="Button">
+               <font>
+                  <Font name="System Bold" size="40.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>

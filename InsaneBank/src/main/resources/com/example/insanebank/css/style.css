@@ -1,0 +1,16 @@
+.class-button-tab-select {
+    -fx-border-radius: 20;
+    -fx-background-color: none;
+    -fx-border-color: #FFFF;
+    -fx-background-radius: 32;
+    -fx-cursor: hand;
+}
+.class-button-tab {
+    -fx-background-color: none;
+    -fx-cursor: hand;
+}
+.class-button-blue {
+    -fx-background-color: #344660;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+}
