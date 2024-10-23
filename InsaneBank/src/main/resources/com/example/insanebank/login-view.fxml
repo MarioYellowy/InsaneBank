@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.text.*?>
@@ -59,11 +60,46 @@
                   </Hyperlink>
                </children>
             </Pane>
-            <Button layoutX="1098.0" layoutY="14.0" mnemonicParsing="false" styleClass="class-button-tab" stylesheets="@css/style.css" text="Button">
-               <font>
-                  <Font name="System Bold" size="40.0" />
-               </font>
-            </Button>
+            <Pane layoutX="10.0" layoutY="10.0" prefHeight="114.0" prefWidth="1320.0">
+               <children>
+                  <ImageView disable="true" fitHeight="107.0" fitWidth="129.0" layoutX="40.0" layoutY="4.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <effect>
+                        <Blend />
+                     </effect>
+                     <image>
+                        <Image url="@img/logo/InsaneBank.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="456.0" layoutY="34.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="151.0" styleClass="class-button-tab-select" stylesheets="@css/style.css" text="Home" textFill="WHITE">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="640.0" layoutY="34.0" mnemonicParsing="false" onAction="#showGnancias" prefHeight="44.0" prefWidth="151.0" styleClass="class-button-tab" stylesheets="@css/style.css" text="Ganancias" textFill="WHITE">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="809.0" layoutY="35.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="121.0" styleClass="class-button-tab" stylesheets="@css/style.css" text="Gastos" textFill="WHITE">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="957.0" layoutY="35.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="121.0" styleClass="class-button-tab" stylesheets="@css/style.css" text="Ahorros" textFill="WHITE">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="1151.0" layoutY="34.0" mnemonicParsing="false" onAction="#showLogn" prefHeight="46.0" prefWidth="132.0" styleClass="class-button-tab" stylesheets="@css/style.css" text="Login" textFill="WHITE">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
          </children>
       </Pane>
    </children>
