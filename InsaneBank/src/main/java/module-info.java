@@ -10,6 +10,8 @@ module com.example.insanebank {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.sql;
+    requires io.github.cdimascio.dotenv.java;
 
     opens com.example.insanebank to javafx.fxml;
     exports com.example.insanebank;
