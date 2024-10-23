@@ -1,25 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1320.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.insanebank.LoginController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1320.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.insanebank.LoginController">
    <children>
-      <ImageView fitHeight="810.0" fitWidth="1328.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="798.0" fitWidth="1320.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/fondo.jpg" />
          </image>
       </ImageView>
-      <Pane opacity="0.56" prefHeight="801.0" prefWidth="1320.0" style="-fx-background-color: black;">
+      <Pane opacity="0.56" prefHeight="798.0" prefWidth="1320.0" style="-fx-background-color: black;">
          <children>
-            <Pane layoutX="-2.0" layoutY="-1.0" prefHeight="796.0" prefWidth="1320.0">
+            <Pane layoutX="249.0" layoutY="113.0" prefHeight="572.0" prefWidth="822.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 15;">
                <children>
-                  <ImageView fitHeight="194.0" fitWidth="221.0" layoutY="602.0" pickOnBounds="true" preserveRatio="true">
+                  <Label layoutX="302.0" layoutY="26.0" text="Login" textFill="#191f31">
+                     <font>
+                        <Font name="System Bold" size="80.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="126.0" layoutY="161.0" text="Email">
+                     <font>
+                        <Font name="System Bold" size="35.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="126.0" layoutY="286.0" text="Password">
+                     <font>
+                        <Font name="System Bold" size="35.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="126.0" layoutY="220.0" prefHeight="45.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 5; -fx-border-color: #1B263D;" styleClass="txtFieldEmail" />
+                  <PasswordField layoutX="126.0" layoutY="345.0" prefHeight="45.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 5; -fx-border-color: #1B263D;" />
+                  <Button layoutX="126.0" layoutY="433.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="600.0" style="-fx-background-color: #0F172C; -fx-text-fill: #ffffff; -fx-background-radius: 25px;" text="Log In" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label layoutX="158.0" layoutY="516.0" text="Don't you have a account?">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Hyperlink layoutX="443.0" layoutY="512.0" text="Create account" textFill="#243054">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Hyperlink>
+               </children>
+            </Pane>
+            <Pane layoutX="10.0" layoutY="10.0" prefHeight="114.0" prefWidth="1320.0">
+               <children>
+                  <ImageView disable="true" fitHeight="107.0" fitWidth="129.0" layoutX="40.0" layoutY="4.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <effect>
+                        <Blend />
+                     </effect>
                      <image>
                         <Image url="@img/logo/InsaneBank.png" />
                      </image>
                   </ImageView>
+                  <Button layoutX="456.0" layoutY="34.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="151.0" styleClass="class-button-tab-select" stylesheets="@css/style.css" text="Home" textFill="WHITE">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="640.0" layoutY="34.0" mnemonicParsing="false" onAction="#showGnancias" prefHeight="44.0" prefWidth="151.0" styleClass="class-button-tab" stylesheets="@css/style.css" text="Ganancias" textFill="WHITE">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="809.0" layoutY="35.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="121.0" styleClass="class-button-tab" stylesheets="@css/style.css" text="Gastos" textFill="WHITE">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="957.0" layoutY="35.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="121.0" styleClass="class-button-tab" stylesheets="@css/style.css" text="Ahorros" textFill="WHITE">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="1151.0" layoutY="34.0" mnemonicParsing="false" onAction="#showLogn" prefHeight="46.0" prefWidth="132.0" styleClass="class-button-tab" stylesheets="@css/style.css" text="Login" textFill="WHITE">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="24.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
          </children>
