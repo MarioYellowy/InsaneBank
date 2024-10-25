@@ -12,7 +12,7 @@ public class Conexion {
     private static final String username = dotenv.get("DB_USER");
     private static final String password = dotenv.get("DB_PASSWORD");
     private static final String dbHost = dotenv.get("DB_HOST");
-    private static final String url = "jdbc:mysql://" + dbHost + ":3306/to_do_list?useSSL=false&allowPublicKeyRetrieval=true&encrypt=false";
+    private static final String url = "jdbc:mysql://" + dbHost + ":3306/insane_bank?useSSL=false&allowPublicKeyRetrieval=true&encrypt=false";
 
     public static Connection conectar() {
         Connection connection = null;
