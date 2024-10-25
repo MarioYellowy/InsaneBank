@@ -28,4 +28,5 @@ public class Validacion {
         stage.setScene(scene);
         stage.show();
     }
+
 }

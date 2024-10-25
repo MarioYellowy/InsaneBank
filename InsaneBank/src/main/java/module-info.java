@@ -12,6 +12,7 @@ module com.example.insanebank {
     requires com.almasb.fxgl.all;
     requires java.sql;
     requires io.github.cdimascio.dotenv.java;
+    requires java.desktop;
 
     opens com.example.insanebank to javafx.fxml;
     exports com.example.insanebank;
