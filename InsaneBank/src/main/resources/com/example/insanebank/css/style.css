@@ -14,3 +14,9 @@
     -fx-border-radius: 20;
     -fx-background-radius: 20;
 }
+
+.class-container-ganancias {
+    -fx-border-radius: 20px;
+    -fx-background-color: #344660E5;
+    -fx-background-radius: 20px;
+}
