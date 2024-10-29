@@ -29,27 +29,17 @@
                   <Blend />
                </effect>
             </ImageView>
-            <Button layoutX="456.0" layoutY="34.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="151.0" styleClass="class-button-tab-select" stylesheets="@css/style.css" text="Home" textFill="WHITE">
+            <Button layoutX="749.0" layoutY="34.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="151.0" styleClass="class-button-tab-select" stylesheets="@css/style.css" text="Home" textFill="WHITE">
                <font>
                   <Font name="Yu Gothic Regular" size="24.0" />
                </font>
             </Button>
-            <Button layoutX="640.0" layoutY="34.0" mnemonicParsing="false" onAction="#showGnancias" prefHeight="44.0" prefWidth="151.0" styleClass="class-button-tab" stylesheets="@css/style.css" text="Ganancias" textFill="WHITE">
+            <Button layoutX="937.0" layoutY="35.0" mnemonicParsing="false" onAction="#showLogn" prefHeight="46.0" prefWidth="121.0" styleClass="class-button-tab" stylesheets="@css/style.css" text="Login" textFill="WHITE">
                <font>
                   <Font name="Yu Gothic Regular" size="24.0" />
                </font>
             </Button>
-            <Button layoutX="809.0" layoutY="35.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="121.0" styleClass="class-button-tab" stylesheets="@css/style.css" text="Gastos" textFill="WHITE">
-               <font>
-                  <Font name="Yu Gothic Regular" size="24.0" />
-               </font>
-            </Button>
-            <Button layoutX="957.0" layoutY="35.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="121.0" styleClass="class-button-tab" stylesheets="@css/style.css" text="Ahorros" textFill="WHITE">
-               <font>
-                  <Font name="Yu Gothic Regular" size="24.0" />
-               </font>
-            </Button>
-            <Button layoutX="1151.0" layoutY="34.0" mnemonicParsing="false" onAction="#showLogn" prefHeight="46.0" prefWidth="132.0" styleClass="class-button-tab" stylesheets="@css/style.css" text="Login" textFill="WHITE">
+            <Button layoutX="1095.0" layoutY="34.0" mnemonicParsing="false" onAction="#showRgst" prefHeight="46.0" prefWidth="188.0" styleClass="class-button-tab" stylesheets="@css/style.css" text="Crear Cuenta" textFill="WHITE">
                <font>
                   <Font name="Yu Gothic Regular" size="24.0" />
                </font>
