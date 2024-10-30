@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class LoginController {
     @FXML
-    private void showRegister(ActionEvent event) throws IOException {
+    void showRegister(ActionEvent event) throws IOException {
         Validacion.cambiarVentana(event, "register-view");
     }
     @FXML
