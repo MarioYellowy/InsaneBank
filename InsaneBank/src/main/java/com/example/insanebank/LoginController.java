@@ -1,27 +1,55 @@
 package com.example.insanebank;
 
+import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
 public class LoginController {
     @FXML
-    private void showRegister(ActionEvent event) throws IOException {
+    void showRegister(ActionEvent event) throws IOException {
         Validacion.cambiarVentana(event, "register-view");
-    }
-    @FXML
-    void showGnancias(ActionEvent event)  throws IOException {
-        Validacion.cambiarVentana(event, "ganancias-view");
     }
 
     @FXML
-    void showHome(ActionEvent event)  throws IOException {
+    void showHome(ActionEvent event) throws IOException {
         Validacion.cambiarVentana(event, "home-view");
     }
 
     @FXML
-    void showLogn(ActionEvent event)  throws IOException {
-        Validacion.cambiarVentana(event, "login-view");
+    private Button btnCrearCuenta;
+    @FXML
+    private Hyperlink hyperCrearCuenta;
+
+    public void initialize() {
+
+        ScaleTransition scaleTransitionBTN = new ScaleTransition(Duration.millis(200), btnCrearCuenta);
+        ScaleTransition scaleTransitionHyper = new ScaleTransition(Duration.millis(200), hyperCrearCuenta);
+
+        scaleTransitionBTN.setFromX(1.0);
+        scaleTransitionBTN.setFromY(1.0);
+        scaleTransitionBTN.setToX(1.1);
+        scaleTransitionBTN.setToY(1.1);
+
+        scaleTransitionHyper.setFromX(1.0);
+        scaleTransitionHyper.setFromY(1.0);
+        scaleTransitionHyper.setToX(1.1);
+        scaleTransitionHyper.setToY(1.1);
+
+        btnCrearCuenta.setOnMouseEntered(event -> scaleTransitionBTN.playFromStart());
+        hyperCrearCuenta.setOnMouseEntered(event -> scaleTransitionHyper.playFromStart());
+
+        btnCrearCuenta.setOnMouseExited(event -> {
+            scaleTransitionBTN.setRate(-1);
+            scaleTransitionBTN.play();
+        });
+        hyperCrearCuenta.setOnMouseExited(event -> {
+            scaleTransitionHyper.setRate(-1);
+            scaleTransitionHyper.play();
+        });
     }
 }
