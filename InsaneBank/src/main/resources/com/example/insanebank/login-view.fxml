@@ -60,7 +60,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Hyperlink layoutX="443.0" layoutY="512.0" text="Crear cuenta" textFill="#243054">
+                  <Hyperlink fx:id="hyperCrearCuenta" layoutX="443.0" layoutY="512.0" onAction="#showRegister" text="Crear cuenta" textFill="#243054">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -80,17 +80,17 @@
                         <Image url="@img/logo/InsaneBank.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="809.0" layoutY="35.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="121.0" styleClass="class-button-tab" stylesheets="@css/style.css" text="Home" textFill="WHITE">
+                  <Button fx:id="btnHome" layoutX="809.0" layoutY="35.0" mnemonicParsing="false" onAction="#showHome" prefHeight="46.0" prefWidth="121.0" styleClass="class-button-tab" stylesheets="@css/style.css" text="Home" textFill="WHITE">
                      <font>
                         <Font name="Yu Gothic Regular" size="24.0" />
                      </font>
                   </Button>
-                  <Button layoutX="957.0" layoutY="35.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="121.0" styleClass="class-button-tab" stylesheets="@css/style.css" text="Login" textFill="WHITE">
+                  <Button layoutX="957.0" layoutY="35.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="121.0" styleClass="class-button-tab-select" stylesheets="@css/style.css" text="Login" textFill="WHITE">
                      <font>
                         <Font name="Yu Gothic Regular" size="24.0" />
                      </font>
                   </Button>
-                  <Button layoutX="1086.0" layoutY="34.0" mnemonicParsing="false" onAction="#showRegister" prefHeight="47.0" prefWidth="197.0" styleClass="class-button-tab-select" stylesheets="@css/style.css" text="Crear cuenta" textFill="WHITE">
+                  <Button fx:id="btnCrearCuenta" layoutX="1086.0" layoutY="34.0" mnemonicParsing="false" onAction="#showRegister" prefHeight="47.0" prefWidth="197.0" styleClass="class-button-tab" stylesheets="@css/style.css" text="Crear cuenta" textFill="WHITE">
                      <font>
                         <Font name="Yu Gothic Regular" size="24.0" />
                      </font>
