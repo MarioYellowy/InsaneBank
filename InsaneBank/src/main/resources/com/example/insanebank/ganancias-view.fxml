@@ -54,13 +54,38 @@
             </Text>
          </children>
       </Pane>
-      <Pane layoutX="87.5" layoutY="199.0" prefHeight="514.0" prefWidth="1145.0" styleClass="class-container-ganancias" stylesheets="@css/style.css">
+      <Pane layoutX="91.0" layoutY="199.0" prefHeight="574.0" prefWidth="1151.0" styleClass="class-container-ganancias" stylesheets="@css/style.css">
          <children>
-            <Text fill="WHITE" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ganancias">
+
+            <ImageView fx:id="imageViewGrafico" fitHeight="350" fitWidth="900" layoutX="100" layoutY="120" />
+
+            <Text fill="WHITE" layoutX="26.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ganancias">
                <font>
-                  <Font size="20.0" />
+                  <Font size="25.0" />
                </font>
             </Text>
+            <Text fill="WHITE" layoutX="945.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+ Añadir datos">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Text>
+            <Button layoutX="26.0" layoutY="67.0" mnemonicParsing="false" styleClass="class-button-tab-select" stylesheets="@css/style.css" text="Total de Ganancias                                                                                                9898898   $$" textFill="WHITE">
+               <font>
+                  <Font name="Yu Gothic Regular" size="25.0" />
+               </font>
+            </Button>
+            <Button layoutX="14.0" layoutY="512.0" mnemonicParsing="false" onAction="#mostrarGraficoDeBarras" prefHeight="48.0" prefWidth="239.0" styleClass="class-button-grafico-barras" stylesheets="@css/style.css" text="Grafico de Barras" textFill="WHITE">
+               <font>
+                  <Font name="Yu Gothic Regular" size="24.0" />
+               </font>
+            </Button>
+
+            <Button layoutX="935.0" layoutY="512.0" mnemonicParsing="false" onAction="#mostrarGraficoDeLineal" prefHeight="48.0" prefWidth="194.0" styleClass="class-button-grafico-lineal" stylesheets="@css/style.css" text="Grafico Lineal" textFill="WHITE">
+               <font>
+                  <Font name="Yu Gothic Regular" size="24.0" />
+               </font>
+            </Button>
+
          </children>
       </Pane>
    </children>
