@@ -11,11 +11,11 @@ import java.io.IOException;
 public class HomeController {
     @FXML
     public void showLogn(ActionEvent event) throws IOException {
-        Validacion.cambiarVentana(event, "login-view");
+        Validacion.cambiarVentana(event, "/fxml/login-view");
     }
 
     @FXML
     public void showRgst(ActionEvent event) throws IOException {
-        Validacion.cambiarVentana(event, "register-view");
+        Validacion.cambiarVentana(event, "/fxml/register-view");
     }
 }

@@ -9,17 +9,18 @@ import javafx.stage.Stage;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.io.IOException;
 
 public class App extends Application {
     private static ApplicationContext applicationContext;
 
     @Override
-    public void init() throws Exception {
+    public void init() throws IOException {
         applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/home-view.fxml"));
         fxmlLoader.setControllerFactory(applicationContext::getBean);
 
@@ -30,7 +31,6 @@ public class App extends Application {
 
     @Override
     public void stop() throws Exception {
-        // Cierra el contexto de Spring cuando la aplicación termine
         if (applicationContext instanceof AnnotationConfigApplicationContext) {
             ((AnnotationConfigApplicationContext) applicationContext).close();
         }

@@ -15,12 +15,12 @@ import java.io.IOException;
 public class LoginController {
     @FXML
     void showRegister(ActionEvent event) throws IOException {
-        Validacion.cambiarVentana(event, "register-view");
+        Validacion.cambiarVentana(event, "/fxml/register-view");
     }
 
     @FXML
     void showHome(ActionEvent event) throws IOException {
-        Validacion.cambiarVentana(event, "home-view");
+        Validacion.cambiarVentana(event, "/fxml/home-view");
     }
 
     @FXML
