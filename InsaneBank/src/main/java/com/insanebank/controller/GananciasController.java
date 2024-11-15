@@ -1,10 +1,12 @@
-package com.example.insanebank;
+package com.insanebank.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import org.springframework.stereotype.Controller;
 
+@Controller
 public class GananciasController {
 
     @FXML

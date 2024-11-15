@@ -1,5 +1,6 @@
-package com.example.insanebank;
+package com.insanebank.controller;
 
+import com.insanebank.Validacion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 

@@ -11,9 +11,12 @@ module com.example.insanebank {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires java.sql;
-    requires io.github.cdimascio.dotenv.java;
     requires java.desktop;
+    requires io.github.cdimascio.dotenv.java;
+    requires spring.context;
 
-    opens com.example.insanebank to javafx.fxml;
-    exports com.example.insanebank;
+    opens com.insanebank to javafx.fxml;
+    exports com.insanebank;
+    exports com.insanebank.controller;
+    opens com.insanebank.controller to javafx.fxml;
 }

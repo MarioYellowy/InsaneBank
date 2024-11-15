@@ -1,4 +1,4 @@
-package com.example.insanebank;
+package com.insanebank.controller;
 
 import javafx.scene.input.MouseEvent;
 
