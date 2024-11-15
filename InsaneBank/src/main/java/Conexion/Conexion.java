@@ -1,11 +1,15 @@
 package Conexion;
+
+import io.github.cdimascio.dotenv.Dotenv;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import io.github.cdimascio.dotenv.Dotenv;
 
 public class Conexion {
+
     private static final Dotenv dotenv = Dotenv.load();
+
     private static final String username = dotenv.get("DB_USER");
     private static final String password = dotenv.get("DB_PASSWORD");
     private static final String dbHost = dotenv.get("DB_HOST");
@@ -14,11 +18,11 @@ public class Conexion {
     public static Connection conectar() {
         Connection connection = null;
         try {
-                connection = DriverManager.getConnection(url, username, password);
-                System.out.println("Conectado exitosamente");
+            connection = DriverManager.getConnection(url, username, password);
+            System.out.println("Conectado exitosamente");
         } catch (SQLException e) {
-                System.out.println("no se puede conectar papu");
-                System.out.println("Error: " + e.getMessage());
+            System.out.println("no se puede conectar papu");
+            System.out.println("Error: " + e.getMessage());
         }
         return connection;
     }

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1320.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.insanebank.controller.GananciasController">
+   <children>
+      <ImageView fitHeight="798.0" fitWidth="1320.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/fondo.jpg" />
+         </image>
+      </ImageView>
+      <Pane layoutX="10.0" layoutY="10.0" prefHeight="114.0" prefWidth="1320.0">
+         <children>
+            <Label alignment="CENTER" layoutX="1153.0" layoutY="16.0" prefHeight="84.0" prefWidth="141.0" style="-fx-background-color: #425870; -fx-background-radius: 10px; -fx-text-fill: white; -fx-padding: 5px 10px;" text="Mijael" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Yu Gothic Regular" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="151.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logo/InsaneBank.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="456.0" layoutY="34.0" mnemonicParsing="false" onAction="#showHome" prefHeight="44.0" prefWidth="151.0" styleClass="class-button-tab" stylesheets="@../css/style.css" text="Home" textFill="WHITE">
+               <font>
+                  <Font name="Yu Gothic Regular" size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="640.0" layoutY="34.0" mnemonicParsing="false" onAction="#showGnancias" prefHeight="44.0" prefWidth="151.0" styleClass="class-button-tab-select" stylesheets="@../css/style.css" text="Ganancias" textFill="WHITE">
+               <font>
+                  <Font name="Yu Gothic Regular" size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="809.0" layoutY="35.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="121.0" styleClass="class-button-tab" stylesheets="@../css/style.css" text="Gastos" textFill="WHITE">
+               <font>
+                  <Font name="Yu Gothic Regular" size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="957.0" layoutY="35.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="121.0" styleClass="class-button-tab" stylesheets="@../css/style.css" text="Ahorros" textFill="WHITE">
+               <font>
+                  <Font name="Yu Gothic Regular" size="24.0" />
+               </font>
+            </Button>
+            <Text fill="WHITE" layoutX="1162.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido">
+               <font>
+                  <Font name="Yu Gothic Regular" size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="91.0" layoutY="199.0" prefHeight="574.0" prefWidth="1151.0" styleClass="class-container-ganancias" stylesheets="@../css/style.css">
+         <children>
+
+            <ImageView fx:id="imageViewGrafico" fitHeight="350" fitWidth="900" layoutX="100" layoutY="120" />
+
+            <Text fill="WHITE" layoutX="26.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ganancias">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="945.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+ Añadir datos">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Text>
+            <Button layoutX="26.0" layoutY="67.0" mnemonicParsing="false" styleClass="class-button-tab-select" stylesheets="@../css/style.css" text="Total de Ganancias                                                                                                9898898   $$" textFill="WHITE">
+               <font>
+                  <Font name="Yu Gothic Regular" size="25.0" />
+               </font>
+            </Button>
+            <Button layoutX="14.0" layoutY="512.0" mnemonicParsing="false" onAction="#mostrarGraficoDeBarras" prefHeight="48.0" prefWidth="239.0" styleClass="class-button-grafico-barras" stylesheets="@../css/style.css" text="Grafico de Barras" textFill="WHITE">
+               <font>
+                  <Font name="Yu Gothic Regular" size="24.0" />
+               </font>
+            </Button>
+
+            <Button layoutX="935.0" layoutY="512.0" mnemonicParsing="false" onAction="#mostrarGraficoDeLineal" prefHeight="48.0" prefWidth="194.0" styleClass="class-button-grafico-lineal" stylesheets="@../css/style.css" text="Grafico Lineal" textFill="WHITE">
+               <font>
+                  <Font name="Yu Gothic Regular" size="24.0" />
+               </font>
+            </Button>
+
+         </children>
+      </Pane>
+   </children>
+</Pane>
