@@ -7,9 +7,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.util.Duration;
+import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
 
+@Controller
 public class LoginController {
     @FXML
     void showRegister(ActionEvent event) throws IOException {

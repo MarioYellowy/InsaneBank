@@ -1,4 +1,4 @@
-module com.example.insanebank {
+module com.insane.config {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -15,8 +15,9 @@ module com.example.insanebank {
     requires io.github.cdimascio.dotenv.java;
     requires spring.context;
 
-    opens com.insanebank to javafx.fxml;
     exports com.insanebank;
     exports com.insanebank.controller;
+    opens com.insanebank to javafx.fxml;
     opens com.insanebank.controller to javafx.fxml;
+    opens com.insanebank.config;
 }
