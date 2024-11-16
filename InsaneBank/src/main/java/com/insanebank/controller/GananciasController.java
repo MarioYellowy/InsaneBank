@@ -12,7 +12,7 @@ public class GananciasController {
     @FXML
     private ImageView imageViewGrafico; // Imagen donde se mostrará el gráfico
 
-    private String graficoDeBarrasPath = "C:\\Users\\Valentin\\OneDrive\\Proyectos UNIVERSIDAD\\Calculo 1\\Capstone_Insane_Bank\\InsaneBank\\src\\main\\resources\\com\\example\\insanebank\\img\\graficos\\graficoBarras.png";  // Ruta del gráfico de barras
+    private String graficoDeBarrasPath = "src/main/resources/img/graficos/graficoBarras.png";  // Ruta del gráfico de barras
     private String graficoLinealPath = "C:\\Users\\Valentin\\OneDrive\\Proyectos UNIVERSIDAD\\Calculo 1\\Capstone_Insane_Bank\\InsaneBank\\src\\main\\resources\\com\\example\\insanebank\\img\\graficos\\graficoLineal.png";  // Ruta del gráfico lineal
 
     @FXML
