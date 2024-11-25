@@ -1,4 +1,4 @@
-package com.example.insanebank;
+package com.insanebank;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
