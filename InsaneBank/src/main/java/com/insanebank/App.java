@@ -21,7 +21,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/home-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/ganancias-view.fxml"));
         fxmlLoader.setControllerFactory(applicationContext::getBean);
 
         Parent root = fxmlLoader.load();
