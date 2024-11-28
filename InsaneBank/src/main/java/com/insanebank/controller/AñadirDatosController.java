@@ -3,10 +3,14 @@ package com.insanebank.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.springframework.stereotype.Controller;
+import javafx.application.Platform;
 
 import java.math.BigDecimal;
+import java.util.concurrent.CompletableFuture;
 
 @Controller
 public class AñadirDatosController {
@@ -24,28 +28,45 @@ public class AñadirDatosController {
     private Label mensajeErrorLabel;
 
     @FXML
+    private Button generarGraficoButton;
+
+    @FXML
+    private StackPane loadingPane;
+
+    @FXML
     private void generarGrafico() {
         if (validarCampos()) {
             BigDecimal monto = new BigDecimal(montoTextField.getText());
             BigDecimal tasaInflacion = new BigDecimal(tasaInflacionTextField.getText());
             int tiempoEstimado = Integer.parseInt(tiempoEstimadoTextField.getText());
 
-            // Aquí iría la lógica para generar el gráfico
-            System.out.println("Generando gráfico con los siguientes datos:");
-            System.out.println("Monto: " + monto);
-            System.out.println("Tasa de inflación: " + tasaInflacion);
-            System.out.println("Tiempo estimado: " + tiempoEstimado);
+            // Mostrar la animación de carga
+            loadingPane.setVisible(true);
+            generarGraficoButton.setDisable(true);
 
-            // Aquí se llamaría al servicio para guardar los datos y generar el gráfico
-            // Por ahora, solo simularemos que se ha guardado correctamente
-            boolean datosGuardados = simularGuardarDatos(monto, tasaInflacion, tiempoEstimado);
+            // Simular el proceso de generación del gráfico de forma asíncrona
+            CompletableFuture.supplyAsync(() -> {
+                try {
+                    // Simulamos un proceso que toma tiempo
+                    Thread.sleep(3000);
+                    return simularGuardarDatos(monto, tasaInflacion, tiempoEstimado);
+                } catch (InterruptedException e) {
+                    return false;
+                }
+            }).thenAccept(datosGuardados -> {
+                // Volvemos al hilo de la UI para actualizar la interfaz
+                Platform.runLater(() -> {
+                    loadingPane.setVisible(false);
+                    generarGraficoButton.setDisable(false);
 
-            if (datosGuardados) {
-                mostrarMensaje("Datos guardados y gráfico generado correctamente.");
-                cerrarVentana();
-            } else {
-                mostrarMensaje("Error al guardar los datos. Por favor, intente nuevamente.");
-            }
+                    if (datosGuardados) {
+                        mostrarMensaje("Datos guardados y gráfico generado correctamente.");
+                        cerrarVentana();
+                    } else {
+                        mostrarMensaje("Error al guardar los datos. Por favor, intente nuevamente.");
+                    }
+                });
+            });
         }
     }
 
@@ -91,7 +112,7 @@ public class AñadirDatosController {
     }
 
     private boolean simularGuardarDatos(BigDecimal monto, BigDecimal tasaInflacion, int tiempoEstimado) {
-        // Aquí se implementaría la lógica real para guardar los datos
+        // Aquí se implementaría la lógica real para guardar los datos y generar el gráfico
         // Por ahora, simplemente retornamos true para simular éxito
         return true;
     }
