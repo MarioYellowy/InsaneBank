@@ -12,7 +12,12 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import java.io.IOException;
 
 public class App extends Application {
+
     private static ApplicationContext applicationContext;
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     @Override
     public void init() throws IOException {
@@ -23,7 +28,6 @@ public class App extends Application {
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/home-view.fxml"));
         fxmlLoader.setControllerFactory(applicationContext::getBean);
-
         Parent root = fxmlLoader.load();
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
@@ -34,9 +38,5 @@ public class App extends Application {
         if (applicationContext instanceof AnnotationConfigApplicationContext) {
             ((AnnotationConfigApplicationContext) applicationContext).close();
         }
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }
