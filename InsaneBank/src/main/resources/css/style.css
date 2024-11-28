@@ -50,3 +50,8 @@
     -fx-background-color: white;
     -fx-text-fill: black;
 }
+.class-alert{
+    -fx-background-color: none;
+    -fx-color-label-visible: white;
+    -fx-text-fill: white;
+}

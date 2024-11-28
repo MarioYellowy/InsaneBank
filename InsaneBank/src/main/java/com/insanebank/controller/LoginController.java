@@ -1,23 +1,26 @@
-package com.example.insanebank;
+package com.insanebank.controller;
 
+import com.insanebank.Validacion;
 import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.util.Duration;
+import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
 
+@Controller
 public class LoginController {
     @FXML
     void showRegister(ActionEvent event) throws IOException {
-        Validacion.cambiarVentana(event, "register-view");
+        Validacion.cambiarVentana(event, "/fxml/register-view");
     }
 
     @FXML
     void showHome(ActionEvent event) throws IOException {
-        Validacion.cambiarVentana(event, "home-view");
+        Validacion.cambiarVentana(event, "/fxml/home-view");
     }
 
     @FXML

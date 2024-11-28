@@ -1,9 +1,14 @@
-package com.example.insanebank;
+package com.insanebank.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.image.ImageView;
 
 public class AhorrosController {
+
+    @FXML
+    private ImageView imageViewGrafico;
+
     @FXML
     void mostrarGraficoDeBarras(ActionEvent event) {
 
@@ -18,4 +23,10 @@ public class AhorrosController {
     void showGnancias(ActionEvent event) {
 
     }
+
+    @FXML
+    void showHome(ActionEvent event) {
+
+    }
+
 }
