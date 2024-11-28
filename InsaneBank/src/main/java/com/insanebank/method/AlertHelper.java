@@ -20,9 +20,8 @@ public class AlertHelper {
 
         // Crear el fondo personalizado
         Pane root = new Pane();
-        root.setStyle(
-                "-fx-background-size: cover;" +
-                "-fx-background-color: black;"
+        root.setStyle("-fx-background-image: url('/../resources/img/fondo.jpg'); " +
+                "-fx-background-size: cover;"
                 );
 
         // Título de la alerta
