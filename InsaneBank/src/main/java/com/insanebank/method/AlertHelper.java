@@ -20,8 +20,8 @@ public class AlertHelper {
 
         // Crear el fondo personalizado
         Pane root = new Pane();
-        root.setStyle("-fx-background-image: url('/../resources/img/fondo.jpg'); " +
-                "-fx-background-size: cover;"
+        root.setStyle(
+                "-fx-background-size: cover;" + "-fx-background-color: black;"
                 );
 
         // Título de la alerta
@@ -36,9 +36,9 @@ public class AlertHelper {
         alertMessage.setFont(new Font("Yu Gothic Medium", 25));
         alertMessage.setStyle("-fx-text-fill: white;");
         alertMessage.setWrapText(true);
-        alertMessage.setPrefWidth(450);
+        alertMessage.setPrefWidth(460);
         alertMessage.setLayoutX(55);
-        alertMessage.setLayoutY(95);
+        alertMessage.setLayoutY(115);
 
         // Botón de cierre
         Button closeButton = new Button(buttonText);
