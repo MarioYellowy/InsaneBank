@@ -1,6 +1,7 @@
 package com.insanebank.controller;
 
 import com.insanebank.Validacion;
+import com.insanebank.method.AlertHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -40,21 +41,22 @@ public class RegisterController {
         String confirmPassword = confirmPasswordField.getText();
 
         if (!isValidEmail(email)) {
-            showAlert("Error", "Correo electrónico inválido. Asegúrate de que sea un formato válido.");
+            AlertHelper.showCustomAlert("Error", "Correo electrónico inválido. Asegúrate de que sea un formato válido.", "Aceptar");
             return;
         }
 
         if (!isValidPassword(password)) {
-            showAlert("Error", "Contraseña inválida. Debe tener entre 8 y 20 caracteres, incluyendo una letra mayúscula, una letra minúscula, un número y un carácter especial.");
+            AlertHelper.showCustomAlert("Error", "Contraseña inválida. Debe tener entre 8 y 20 caracteres, incluyendo una letra mayúscula, una letra minúscula, un número y un carácter especial.", "Aceptar");
             return;
         }
 
         if (!password.equals(confirmPassword)) {
-            showAlert("Error", "La confirmación de la contraseña no coincide.");
+            AlertHelper.showCustomAlert("Error", "La confirmación de la contraseña no coincide.", "Aceptar");
             return;
         }
 
-        showAlert("Éxito", "Registro completado con éxito.");
+        AlertHelper.showCustomAlert("Éxito", "Registro completado con éxito.", "Aceptar");
+
     }
 
     private boolean isValidEmail(String email) {
