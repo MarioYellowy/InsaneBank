@@ -20,7 +20,7 @@ public class App extends Application {
     }
 
     @Override
-    public void init() throws IOException {
+    public void init() {
         applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
     }
 
@@ -30,6 +30,7 @@ public class App extends Application {
         fxmlLoader.setControllerFactory(applicationContext::getBean);
         Parent root = fxmlLoader.load();
         primaryStage.setScene(new Scene(root));
+        primaryStage.setTitle("Insane Bank");
         primaryStage.show();
     }
 
