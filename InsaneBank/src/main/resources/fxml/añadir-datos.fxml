@@ -14,26 +14,29 @@
 
 <StackPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.insanebank.controller.AñadirDatosController"
            maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-           prefHeight="400.0" prefWidth="600.0">
+           prefHeight="600.0" prefWidth="800.0">
     <children>
         <Pane>
             <children>
-                <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true">
+                <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true">
                     <image>
                         <Image url="@../img/fondo.jpg" />
                     </image>
                 </ImageView>
-                <VBox alignment="CENTER" spacing="20" layoutX="50" layoutY="50" prefWidth="500" prefHeight="300"
+                <VBox alignment="CENTER" spacing="20" layoutX="50" layoutY="50" prefWidth="700" prefHeight="500"
                       style="-fx-background-color: rgba(66, 88, 112, 0.8); -fx-padding: 20; -fx-background-radius: 10;">
                     <Text fill="WHITE" style="-fx-font-size: 24px;" text="Añadir Datos"/>
-                    <TextField fx:id="montoTextField" promptText="Monto" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0 0 1 0; -fx-text-fill: white;"/>
-                    <TextField fx:id="tasaInflacionTextField" promptText="Tasa de inflación" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0 0 1 0; -fx-text-fill: white;"/>
-                    <TextField fx:id="tiempoEstimadoTextField" promptText="Tiempo estimado" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0 0 1 0; -fx-text-fill: white;"/>
+                    <HBox spacing="10">
+                        <TextField fx:id="montoTextField" promptText="Monto" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0 0 1 0; -fx-text-fill: white;"/>
+                        <TextField fx:id="tasaInflacionTextField" promptText="Tasa de inflación" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0 0 1 0; -fx-text-fill: white;"/>
+                        <TextField fx:id="tiempoEstimadoTextField" promptText="Tiempo estimado (años)" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0 0 1 0; -fx-text-fill: white;"/>
+                    </HBox>
                     <Label fx:id="mensajeErrorLabel" textFill="RED" visible="false"/>
                     <HBox spacing="10" alignment="CENTER">
                         <Button fx:id="generarGraficoButton" text="Generar Gráfico" onAction="#generarGrafico" style="-fx-background-color: white; -fx-text-fill: #425870;"/>
                         <Button text="Cancelar" onAction="#cancelar" style="-fx-background-color: #425870; -fx-text-fill: white;"/>
                     </HBox>
+                    <StackPane fx:id="chartContainer" prefHeight="300" prefWidth="600"/>
                 </VBox>
             </children>
         </Pane>

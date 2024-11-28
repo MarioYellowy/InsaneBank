@@ -6,11 +6,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import org.springframework.stereotype.Controller;
 import javafx.application.Platform;
 
 import java.math.BigDecimal;
-import java.util.concurrent.CompletableFuture;
+import java.math.RoundingMode;
 
 @Controller
 public class AñadirDatosController {
@@ -34,6 +37,9 @@ public class AñadirDatosController {
     private StackPane loadingPane;
 
     @FXML
+    private StackPane chartContainer;
+
+    @FXML
     private void generarGrafico() {
         if (validarCampos()) {
             BigDecimal monto = new BigDecimal(montoTextField.getText());
@@ -44,30 +50,49 @@ public class AñadirDatosController {
             loadingPane.setVisible(true);
             generarGraficoButton.setDisable(true);
 
-            // Simular el proceso de generación del gráfico de forma asíncrona
-            CompletableFuture.supplyAsync(() -> {
-                try {
-                    // Simulamos un proceso que toma tiempo
-                    Thread.sleep(3000);
-                    return simularGuardarDatos(monto, tasaInflacion, tiempoEstimado);
-                } catch (InterruptedException e) {
-                    return false;
-                }
-            }).thenAccept(datosGuardados -> {
-                // Volvemos al hilo de la UI para actualizar la interfaz
+            // Generar el gráfico en un hilo separado
+            new Thread(() -> {
+                LineChart<Number, Number> lineChart = crearGrafico(monto, tasaInflacion, tiempoEstimado);
+
+                // Actualizar la UI en el hilo de JavaFX
                 Platform.runLater(() -> {
                     loadingPane.setVisible(false);
                     generarGraficoButton.setDisable(false);
 
-                    if (datosGuardados) {
-                        mostrarMensaje("Datos guardados y gráfico generado correctamente.");
-                        cerrarVentana();
+                    if (lineChart != null) {
+                        chartContainer.getChildren().clear();
+                        chartContainer.getChildren().add(lineChart);
+                        mostrarMensaje("Gráfico generado correctamente.");
                     } else {
-                        mostrarMensaje("Error al guardar los datos. Por favor, intente nuevamente.");
+                        mostrarMensaje("Error al generar el gráfico. Por favor, intente nuevamente.");
                     }
                 });
-            });
+            }).start();
         }
+    }
+
+    private LineChart<Number, Number> crearGrafico(BigDecimal montoInicial, BigDecimal tasaInflacion, int años) {
+        NumberAxis xAxis = new NumberAxis(0, años, 1);
+        NumberAxis yAxis = new NumberAxis();
+        xAxis.setLabel("Años");
+        yAxis.setLabel("Monto");
+
+        LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
+        lineChart.setTitle("Proyección de Monto Ajustado por Inflación");
+
+        XYChart.Series<Number, Number> series = new XYChart.Series<>();
+        series.setName("Monto Ajustado");
+
+        BigDecimal montoActual = montoInicial;
+        BigDecimal tasaInflacionDecimal = tasaInflacion.divide(new BigDecimal("100"), 4, RoundingMode.HALF_UP);
+
+        for (int i = 0; i <= años; i++) {
+            series.getData().add(new XYChart.Data<>(i, montoActual.doubleValue()));
+            montoActual = montoActual.multiply(BigDecimal.ONE.add(tasaInflacionDecimal)).setScale(2, RoundingMode.HALF_UP);
+        }
+
+        lineChart.getData().add(series);
+        return lineChart;
     }
 
     private boolean validarCampos() {
@@ -109,12 +134,6 @@ public class AñadirDatosController {
     private void mostrarMensaje(String mensaje) {
         mensajeErrorLabel.setText(mensaje);
         mensajeErrorLabel.setVisible(true);
-    }
-
-    private boolean simularGuardarDatos(BigDecimal monto, BigDecimal tasaInflacion, int tiempoEstimado) {
-        // Aquí se implementaría la lógica real para guardar los datos y generar el gráfico
-        // Por ahora, simplemente retornamos true para simular éxito
-        return true;
     }
 
     @FXML
