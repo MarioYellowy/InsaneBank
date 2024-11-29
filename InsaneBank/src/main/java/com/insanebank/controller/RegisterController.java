@@ -62,7 +62,6 @@ public class RegisterController {
 
         try (Connection connection = Conexion.conectar()) {
             if (connection != null) {
-                // Verificar si el correo ya existe
                 String checkEmailQuery = "SELECT COUNT(*) FROM usuarios WHERE usuario_email = ?";
                 try (PreparedStatement checkStatement = connection.prepareStatement(checkEmailQuery)) {
                     checkStatement.setString(1, usuario_email);
@@ -73,7 +72,6 @@ public class RegisterController {
                     }
                 }
 
-                // Si no existe, procedemos a registrar el usuario
                 String hashedPassword = BCrypt.hashpw(usuario_password, BCrypt.gensalt());
                 String query = "INSERT INTO usuarios (usuario_email, usuario_password) VALUES (?, ?)";
                 try (PreparedStatement statement = connection.prepareStatement(query)) {
@@ -94,7 +92,6 @@ public class RegisterController {
         }
     }
 
-
     private boolean isValidEmail(String email) {
         String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
         return Pattern.matches(emailRegex, email);
@@ -104,7 +101,6 @@ public class RegisterController {
         String passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!\"#$%&'()*+,-./:;<=>?@\\[\\]^_{|}~])[A-Za-z\\d!\"#$%&'()*+,-./:;<=>?@\\[\\]^_{|}~]{8,20}$";
         return Pattern.matches(passwordRegex, password);
     }
-
 
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
