@@ -60,10 +60,21 @@ public class RegisterController {
             return;
         }
 
-        String hashedPassword = BCrypt.hashpw(usuario_password, BCrypt.gensalt());
-
         try (Connection connection = Conexion.conectar()) {
             if (connection != null) {
+                // Verificar si el correo ya existe
+                String checkEmailQuery = "SELECT COUNT(*) FROM usuarios WHERE usuario_email = ?";
+                try (PreparedStatement checkStatement = connection.prepareStatement(checkEmailQuery)) {
+                    checkStatement.setString(1, usuario_email);
+                    var resultSet = checkStatement.executeQuery();
+                    if (resultSet.next() && resultSet.getInt(1) > 0) {
+                        AlertHelper.showCustomAlert("Error", "Este correo ya está registrado. Usa otro correo.", "Aceptar");
+                        return;
+                    }
+                }
+
+                // Si no existe, procedemos a registrar el usuario
+                String hashedPassword = BCrypt.hashpw(usuario_password, BCrypt.gensalt());
                 String query = "INSERT INTO usuarios (usuario_email, usuario_password) VALUES (?, ?)";
                 try (PreparedStatement statement = connection.prepareStatement(query)) {
                     statement.setString(1, usuario_email);
@@ -75,16 +86,14 @@ public class RegisterController {
                     } else {
                         AlertHelper.showCustomAlert("Error", "No se pudo registrar el usuario.", "Aceptar");
                     }
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
                 }
             }
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
             AlertHelper.showCustomAlert("Error", "Hubo un problema al conectar con la base de datos.", "Aceptar");
         }
-
     }
+
 
     private boolean isValidEmail(String email) {
         String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
