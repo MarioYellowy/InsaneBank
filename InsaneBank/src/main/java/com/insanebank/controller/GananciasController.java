@@ -1,6 +1,6 @@
 package com.insanebank.controller;
 
-import com.insanebank.Validacion;
+import com.insanebank.method.Validacion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;

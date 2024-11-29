@@ -1,4 +1,4 @@
-package com.insanebank;
+package com.insanebank.method;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +14,7 @@ import java.io.IOException;
 public class Validacion {
     public static void cambiarVentana(ActionEvent event, String ventana) throws IOException {
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(Validacion.class.getResource("/fxml/" + ventana + ".fxml"));
+        FXMLLoader loader = new FXMLLoader(Validacion.class.getResource(ventana+".fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = new Stage();
@@ -24,9 +24,9 @@ public class Validacion {
     }
 
     public static void mostrarVentana(String ventana) throws IOException {
-        FXMLLoader loader = new FXMLLoader(Validacion.class.getResource("/fxml/" + ventana + ".fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
+        FXMLLoader loader = new FXMLLoader(Validacion.class.getResource(ventana+".fxml"));
+        Parent root1 = loader.load();
+        Scene scene = new Scene(root1);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();

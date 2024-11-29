@@ -22,4 +22,6 @@ module com.insane.config {
     opens com.insanebank to javafx.fxml;
     opens com.insanebank.controller to javafx.fxml;
     opens com.insanebank.config;
+    exports com.insanebank.method;
+    opens com.insanebank.method to javafx.fxml;
 }
