@@ -65,9 +65,10 @@ public class RegisterController {
     }
 
     private boolean isValidPassword(String password) {
-        String passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,20}$";
+        String passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!\"#$%&'()*+,-./:;<=>?@\\[\\]^_{|}~])[A-Za-z\\d!\"#$%&'()*+,-./:;<=>?@\\[\\]^_{|}~]{8,20}$";
         return Pattern.matches(passwordRegex, password);
     }
+
 
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
