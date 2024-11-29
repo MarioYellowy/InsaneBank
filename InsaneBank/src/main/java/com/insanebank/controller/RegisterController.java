@@ -67,10 +67,23 @@ public class RegisterController {
                 String query = "INSERT INTO usuarios (usuario_email, usuario_password) VALUES (?, ?)";
                 try (PreparedStatement statement = connection.prepareStatement(query)) {
                     statement.setString(1, usuario_email);
-                    statement.setString(2, hashedPassword);  // Guardamos la contraseña encriptada
+                    statement.setString(2, hashedPassword);
                     int rowsInserted = statement.executeUpdate();
                     if (rowsInserted > 0) {
-                        AlertHelper.showCustomAlert("Éxito", "Registro completado con éxito.", "Aceptar");
+                        // Mostrar mensaje de éxito
+                        Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                        successAlert.setTitle("Éxito");
+                        successAlert.setHeaderText("Registro completado con éxito.");
+                        successAlert.setContentText("Tu cuenta ha sido creada con éxito.");
+                        successAlert.showAndWait();
+
+                        // Redirigir a la pantalla de login después de cerrar el mensaje
+                        try {
+                            Validacion.cambiarVentana(event, "/fxml/login-view");
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            showAlert("Error", "No se pudo cargar la ventana de inicio de sesión.");
+                        }
                     } else {
                         AlertHelper.showCustomAlert("Error", "No se pudo registrar el usuario.", "Aceptar");
                     }
@@ -80,10 +93,6 @@ public class RegisterController {
             e.printStackTrace();
             AlertHelper.showCustomAlert("Error", "Hubo un problema al conectar con la base de datos.", "Aceptar");
         }
-
-        AlertHelper.showCustomAlert("Éxito", "Registro completado con éxito.", "Aceptar");
-
-
     }
 
     private boolean isValidEmail(String email) {
