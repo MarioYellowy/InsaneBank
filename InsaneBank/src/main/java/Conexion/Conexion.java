@@ -1,7 +1,6 @@
 package Conexion;
 
 import io.github.cdimascio.dotenv.Dotenv;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -10,10 +9,9 @@ public class Conexion {
 
     private static final Dotenv dotenv = Dotenv.load();
 
-    private static final String username = dotenv.get("DB_USER");
+    private static final String url = dotenv.get("DB_URL");
+    private static final String username = dotenv.get("DB_USERNAME");
     private static final String password = dotenv.get("DB_PASSWORD");
-    private static final String dbHost = dotenv.get("DB_HOST");
-    private static final String url = "jdbc:mysql://" + dbHost + ":3306/insane_bank?useSSL=false&allowPublicKeyRetrieval=true&encrypt=false";
 
     public static Connection conectar() {
         Connection connection = null;
@@ -21,7 +19,7 @@ public class Conexion {
             connection = DriverManager.getConnection(url, username, password);
             System.out.println("Conectado exitosamente");
         } catch (SQLException e) {
-            System.out.println("no se puede conectar papu");
+            System.out.println("No se puede conectar papu");
             System.out.println("Error: " + e.getMessage());
         }
         return connection;
@@ -29,5 +27,13 @@ public class Conexion {
 
     public static void main(String[] args) {
         Connection connection = conectar();
+        if (connection != null) {
+            try {
+                connection.close();
+                System.out.println("Conexión cerrada.");
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar la conexión: " + e.getMessage());
+            }
+        }
     }
 }
