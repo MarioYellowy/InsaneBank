@@ -32,7 +32,7 @@ public class RegisterController {
     @FXML
     void goToLogin(ActionEvent event) {
         try {
-            Validacion.cambiarVentana(event, "/fxml/login-view");
+            Validacion.cambiarVentana(event, "/fxml/login-view.fxml");
         } catch (IOException e) {
             e.printStackTrace();
             showAlert("Error", "No se pudo cargar la ventana de inicio de sesión.");
@@ -70,29 +70,20 @@ public class RegisterController {
                     statement.setString(2, hashedPassword);
                     int rowsInserted = statement.executeUpdate();
                     if (rowsInserted > 0) {
-                        // Mostrar mensaje de éxito
-                        Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-                        successAlert.setTitle("Éxito");
-                        successAlert.setHeaderText("Registro completado con éxito.");
-                        successAlert.setContentText("Tu cuenta ha sido creada con éxito.");
-                        successAlert.showAndWait();
-
-                        // Redirigir a la pantalla de login después de cerrar el mensaje
-                        try {
-                            Validacion.cambiarVentana(event, "/fxml/login-view");
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                            showAlert("Error", "No se pudo cargar la ventana de inicio de sesión.");
-                        }
+                        AlertHelper.showCustomAlert("Éxito", "Registro completado con éxito.", "Aceptar");
+                        Validacion.cambiarVentana(event, "/fxml/login-view.fxml");
                     } else {
                         AlertHelper.showCustomAlert("Error", "No se pudo registrar el usuario.", "Aceptar");
                     }
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
             AlertHelper.showCustomAlert("Error", "Hubo un problema al conectar con la base de datos.", "Aceptar");
         }
+
     }
 
     private boolean isValidEmail(String email) {
