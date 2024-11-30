@@ -1,4 +1,4 @@
-module com.insanebank {
+module com.insane.config {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -10,12 +10,11 @@ module com.insanebank {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
+    requires java.sql;
     requires java.desktop;
+    requires io.github.cdimascio.dotenv.java;
+
     requires spring.context;
-    requires jakarta.persistence;
-    requires static lombok;
-    requires spring.data.jpa;
-    requires org.slf4j;
 
     exports com.insanebank;
     exports com.insanebank.controller;

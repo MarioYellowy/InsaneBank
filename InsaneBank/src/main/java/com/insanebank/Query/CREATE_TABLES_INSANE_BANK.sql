@@ -1,9 +1,9 @@
-CREATE database insane_bank;
-USE insane_bank;
+CREATE database insaneBank;
+USE insaneBank;
 
 CREATE TABLE usuarios (
     usuario_id int PRIMARY KEY NOT NULL auto_increment,
-    nombre_usuario VARCHAR(50),
-    mail VARCHAR(50),
-    contraseña VARCHAR(60)
+    usuario_nombre VARCHAR(50),
+    usuario_email VARCHAR(50),
+    usuario_password VARCHAR(60)
 );

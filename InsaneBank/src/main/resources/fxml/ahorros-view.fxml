@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1320.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.insanebank.controller.GananciasController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1320.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.insanebank.controller.AhorrosController">
    <children>
       <ImageView fitHeight="798.0" fitWidth="1320.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -32,7 +32,7 @@
                   <Font name="Yu Gothic Regular" size="24.0" />
                </font>
             </Button>
-            <Button layoutX="640.0" layoutY="34.0" mnemonicParsing="false" onAction="#showGnancias" prefHeight="44.0" prefWidth="151.0" styleClass="class-button-tab-select" stylesheets="@../css/style.css" text="Ganancias" textFill="WHITE">
+            <Button layoutX="640.0" layoutY="34.0" mnemonicParsing="false" onAction="#showGnancias" prefHeight="44.0" prefWidth="151.0" styleClass="class-button-tab" stylesheets="@../css/style.css" text="Ganancias" textFill="WHITE">
                <font>
                   <Font name="Yu Gothic Regular" size="24.0" />
                </font>
@@ -42,7 +42,7 @@
                   <Font name="Yu Gothic Regular" size="24.0" />
                </font>
             </Button>
-            <Button layoutX="957.0" layoutY="35.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="121.0" styleClass="class-button-tab" stylesheets="@../css/style.css" text="Ahorros" textFill="WHITE">
+            <Button layoutX="957.0" layoutY="35.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="121.0" styleClass="class-button-tab-select" stylesheets="@../css/style.css" text="Ahorros" textFill="WHITE">
                <font>
                   <Font name="Yu Gothic Regular" size="24.0" />
                </font>
@@ -57,17 +57,17 @@
       <Pane layoutX="91.0" layoutY="199.0" prefHeight="574.0" prefWidth="1151.0" styleClass="class-container-ganancias" stylesheets="@../css/style.css">
          <children>
             <ImageView fx:id="imageViewGrafico" fitHeight="350" fitWidth="900" layoutX="100" layoutY="120" />
-            <Text fill="WHITE" layoutX="26.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ganancias">
+            <Text fill="WHITE" layoutX="26.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ahorros">
                <font>
                   <Font size="25.0" />
                </font>
             </Text>
-            <Button layoutX="945.0" layoutY="10.0" mnemonicParsing="false" onAction="#showVentanaAñadirDatos" prefHeight="40.0" prefWidth="180.0" styleClass="class-button-añadir-datos" stylesheets="@../css/style.css" text="+ Añadir datos" textFill="WHITE">
+            <Text fill="WHITE" layoutX="945.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+ Añadir datos">
                <font>
-                  <Font name="Yu Gothic Regular" size="20.0" />
+                  <Font size="25.0" />
                </font>
-            </Button>
-            <Button layoutX="26.0" layoutY="67.0" mnemonicParsing="false" styleClass="class-button-tab-select" stylesheets="@../css/style.css" text="Total de Ganancias                                                                                                9898898   $$" textFill="WHITE">
+            </Text>
+            <Button layoutX="26.0" layoutY="67.0" mnemonicParsing="false" styleClass="class-button-tab-select" stylesheets="@../css/style.css" text="Total de Ahorros                                                                                                       9898898   $$" textFill="WHITE">
                <font>
                   <Font name="Yu Gothic Regular" size="25.0" />
                </font>
