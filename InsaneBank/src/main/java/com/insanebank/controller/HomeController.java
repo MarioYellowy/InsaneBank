@@ -1,6 +1,6 @@
 package com.insanebank.controller;
 
-import com.insanebank.Validacion;
+import com.insanebank.method.Validacion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import org.springframework.stereotype.Controller;
@@ -11,11 +11,11 @@ import java.io.IOException;
 public class HomeController {
     @FXML
     public void showLogn(ActionEvent event) throws IOException {
-        Validacion.cambiarVentana(event, "/fxml/login-view");
+        Validacion.cambiarVentana(event, "/fxml/login-view.fxml");
     }
 
     @FXML
     public void showRgst(ActionEvent event) throws IOException {
-        Validacion.cambiarVentana(event, "/fxml/register-view");
+        Validacion.cambiarVentana(event, "/fxml/register-view.fxml");
     }
 }
