@@ -14,13 +14,14 @@ import java.io.IOException;
 public class Validacion {
     public static void cambiarVentana(ActionEvent event, String ventana) throws IOException {
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(Validacion.class.getResource(ventana+".fxml"));
+
+        FXMLLoader loader = new FXMLLoader(Validacion.class.getResource(ventana));
+
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
-        currentStage.close();
+
+        currentStage.setScene(scene);
+        currentStage.show();
     }
 
     public static void mostrarVentana(String ventana) throws IOException {

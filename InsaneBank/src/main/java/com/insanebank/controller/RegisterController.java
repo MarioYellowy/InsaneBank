@@ -32,7 +32,7 @@ public class RegisterController {
     @FXML
     void goToLogin(ActionEvent event) {
         try {
-            Validacion.cambiarVentana(event, "/fxml/login-view");
+            Validacion.cambiarVentana(event, "/fxml/login-view.fxml");
         } catch (IOException e) {
             e.printStackTrace();
             showAlert("Error", "No se pudo cargar la ventana de inicio de sesión.");
@@ -60,30 +60,36 @@ public class RegisterController {
             return;
         }
 
-        String hashedPassword = BCrypt.hashpw(usuario_password, BCrypt.gensalt());
-
         try (Connection connection = Conexion.conectar()) {
             if (connection != null) {
+                String checkEmailQuery = "SELECT COUNT(*) FROM usuarios WHERE usuario_email = ?";
+                try (PreparedStatement checkStatement = connection.prepareStatement(checkEmailQuery)) {
+                    checkStatement.setString(1, usuario_email);
+                    var resultSet = checkStatement.executeQuery();
+                    if (resultSet.next() && resultSet.getInt(1) > 0) {
+                        AlertHelper.showCustomAlert("Error", "Este correo ya está registrado. Usa otro correo.", "Aceptar");
+                        return;
+                    }
+                }
+
+                String hashedPassword = BCrypt.hashpw(usuario_password, BCrypt.gensalt());
                 String query = "INSERT INTO usuarios (usuario_email, usuario_password) VALUES (?, ?)";
                 try (PreparedStatement statement = connection.prepareStatement(query)) {
                     statement.setString(1, usuario_email);
-                    statement.setString(2, hashedPassword);  // Guardamos la contraseña encriptada
+                    statement.setString(2, hashedPassword);
                     int rowsInserted = statement.executeUpdate();
                     if (rowsInserted > 0) {
                         AlertHelper.showCustomAlert("Éxito", "Registro completado con éxito.", "Aceptar");
+                        Validacion.cambiarVentana(event, "/fxml/login-view.fxml");
                     } else {
                         AlertHelper.showCustomAlert("Error", "No se pudo registrar el usuario.", "Aceptar");
                     }
                 }
             }
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
             AlertHelper.showCustomAlert("Error", "Hubo un problema al conectar con la base de datos.", "Aceptar");
         }
-
-        AlertHelper.showCustomAlert("Éxito", "Registro completado con éxito.", "Aceptar");
-
-
     }
 
     private boolean isValidEmail(String email) {
@@ -95,7 +101,6 @@ public class RegisterController {
         String passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!\"#$%&'()*+,-./:;<=>?@\\[\\]^_{|}~])[A-Za-z\\d!\"#$%&'()*+,-./:;<=>?@\\[\\]^_{|}~]{8,20}$";
         return Pattern.matches(passwordRegex, password);
     }
-
 
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
