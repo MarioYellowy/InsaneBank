@@ -38,13 +38,12 @@ public class LoginController {
 
     @FXML
     private Button btnCrearCuenta;
-    @FXML
-    private Hyperlink hyperCrearCuenta;
-    @FXML
-    private Button loginButton;
 
     @FXML
-    private void login(ActionEvent event) {
+    private Hyperlink hyperCrearCuenta;
+
+    @FXML
+    private void handleLogin(ActionEvent event) {
         String usuario_email = emailField.getText();
         String usuario_password = passwordField.getText();
 
@@ -53,7 +52,6 @@ public class LoginController {
             return;
         }
 
-        // Validación de formato de correo electrónico
         if (!isValidEmail(usuario_email)) {
             AlertHelper.showCustomAlert("Error", "Correo electrónico inválido.", "Aceptar");
             return;
@@ -71,7 +69,7 @@ public class LoginController {
 
                         if (BCrypt.checkpw(usuario_password, storedPasswordHash)) {
                             AlertHelper.showCustomAlert("Éxito", "Inicio de sesión exitoso.", "Aceptar");
-                            Validacion.cambiarVentana(event, "/fxml/home-view.fxml");  // Redirigir a la ventana principal
+                            Validacion.cambiarVentana(event, "/fxml/ganancias-view.fxml");
                         } else {
                             AlertHelper.showCustomAlert("Error", "Contraseña incorrecta.", "Aceptar");
                         }
