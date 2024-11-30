@@ -15,6 +15,7 @@ module com.insane.config {
     requires io.github.cdimascio.dotenv.java;
 
     requires spring.context;
+    requires jbcrypt;
 
     exports com.insanebank;
     exports com.insanebank.controller;
@@ -22,4 +23,6 @@ module com.insane.config {
     opens com.insanebank to javafx.fxml;
     opens com.insanebank.controller to javafx.fxml;
     opens com.insanebank.config;
+    exports com.insanebank.method;
+    opens com.insanebank.method to javafx.fxml;
 }
