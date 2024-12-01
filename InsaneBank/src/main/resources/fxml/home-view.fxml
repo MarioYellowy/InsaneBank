@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1320.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.insanebank.controller.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1320.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.insanebank.controller.HomeController">
    <children>
       <ImageView fitHeight="810.0" fitWidth="1328.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -51,12 +54,12 @@
                   <Image url="@../img/home.png" />
                </image>
             </ImageView>
-            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="477.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ve crecer tu Dinero ¡YA!" textAlignment="RIGHT" wrappingWidth="765.498046875">
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="521.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ve crecer tu Dinero ¡YA!" textAlignment="CENTER" wrappingWidth="720.13671875">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="62.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="521.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nuestra plataforma te ofrece una solución integral para administrar tus finanzas de manera eficiente y sin complicaciones. Desde el seguimiento de tus ingresos hasta el análisis detallado de tus gastos, te proporcionamos las herramientas necesarias para tomar el control total de tu situación financiera, permitiéndote alcanzar tus objetivos y asegurar un futuro económico estable." textAlignment="RIGHT" wrappingWidth="720.13671875">
+            <Text fill="WHITE" layoutX="521.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nuestra aplicación te ayuda a simular el crecimiento de tu dinero en ahorros o inversiones, usando la derivada para calcular la tasa de crecimiento instantánea con interés compuesto. Fácil, preciso y diseñado para planear tu futuro financiero." textAlignment="JUSTIFY" wrappingWidth="720.13671875">
                <font>
                   <Font name="Yu Gothic UI Light" size="24.0" />
                </font>
