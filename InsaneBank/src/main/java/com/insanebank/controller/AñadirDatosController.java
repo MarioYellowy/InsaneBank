@@ -60,7 +60,7 @@ public class AñadirDatosController {
         new Thread(() -> {
             try {
 
-                Thread.sleep(3000);
+                Thread.sleep(1500);
 
                 Platform.runLater(() -> {
                     BigDecimal monto = new BigDecimal(montoTextField.getText());
