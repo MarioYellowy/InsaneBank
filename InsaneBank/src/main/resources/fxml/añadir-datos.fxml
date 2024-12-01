@@ -2,49 +2,49 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ProgressIndicator?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.insanebank.controller.AñadirDatosController"
-           maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-           prefHeight="600.0" prefWidth="800.0">
+<StackPane prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.insanebank.controller.AñadirDatosController">
     <children>
         <Pane>
             <children>
-                <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true">
+                <ImageView fitHeight="600.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="false">
                     <image>
                         <Image url="@../img/fondo.jpg" />
                     </image>
                 </ImageView>
-                <VBox alignment="CENTER" spacing="20" layoutX="50" layoutY="50" prefWidth="700" prefHeight="500"
-                      style="-fx-background-color: rgba(66, 88, 112, 0.8); -fx-padding: 20; -fx-background-radius: 10;">
-                    <Text fill="WHITE" style="-fx-font-size: 24px;" text="Añadir Datos"/>
-                    <HBox spacing="10">
-                        <TextField fx:id="montoTextField" promptText="Monto" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0 0 1 0; -fx-text-fill: white;"/>
-                        <TextField fx:id="tasaInflacionTextField" promptText="Tasa de inflación" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0 0 1 0; -fx-text-fill: white;"/>
-                        <TextField fx:id="tiempoEstimadoTextField" promptText="Tiempo estimado (años)" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0 0 1 0; -fx-text-fill: white;"/>
+                <VBox alignment="CENTER" layoutX="42.0" layoutY="90.0" prefHeight="420.0" prefWidth="317.0" spacing="20" style="-fx-background-color: rgba(66, 88, 112, 0.8); -fx-padding: 20; -fx-background-radius: 15;">
+                    <Text fill="WHITE" style="-fx-font-size: 20px;" text="Añadir Datos" />
+                    <VBox spacing="5">
+                        <Text fill="WHITE" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Monto" />
+                        <StackPane style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0 0 1 0; -fx-padding: 5;">
+                            <TextField fx:id="montoTextField" promptText="Ingrese el monto" style="-fx-background-color: transparent; -fx-border-width: 0; -fx-text-fill: white;" />
+                        </StackPane>
+                    </VBox>
+                    <VBox spacing="5">
+                        <Text fill="WHITE" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Tasa de interés" />
+                        <StackPane style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0 0 1 0; -fx-padding: 5;">
+                            <TextField fx:id="tasaInflacionTextField" promptText="Ingrese la tasa de interés" style="-fx-background-color: transparent; -fx-border-width: 0; -fx-text-fill: white;" />
+                        </StackPane>
+                    </VBox>
+                    <VBox spacing="5">
+                        <Text fill="WHITE" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Fecha Límite" />
+                        <StackPane style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0 0 1 0; -fx-padding: 5;">
+                            <TextField fx:id="tiempoEstimadoTextField" promptText="Ingrese la fecha límite" style="-fx-background-color: transparent; -fx-border-width: 0; -fx-text-fill: white;" />
+                        </StackPane>
+                    </VBox>
+                    <HBox alignment="CENTER" spacing="10">
+                        <Button fx:id="generarGraficoButton" onAction="#generarGrafico" style="-fx-background-color: white; -fx-text-fill: #425870; -fx-padding: 5 15; -fx-font-size: 14px;" text="Generar Gráfico" />
+                        <Button fx:id="cancelarButton" onAction="#cancelar" style="-fx-background-color: white; -fx-text-fill: #425870; -fx-padding: 5 15; -fx-font-size: 14px;" text="Cancelar" />
                     </HBox>
-                    <Label fx:id="mensajeErrorLabel" textFill="RED" visible="false"/>
-                    <HBox spacing="10" alignment="CENTER">
-                        <Button fx:id="generarGraficoButton" text="Generar Gráfico" onAction="#generarGrafico" style="-fx-background-color: white; -fx-text-fill: #425870;"/>
-                        <Button text="Cancelar" onAction="#cancelar" style="-fx-background-color: #425870; -fx-text-fill: white;"/>
-                    </HBox>
-                    <StackPane fx:id="chartContainer" prefHeight="300" prefWidth="600"/>
                 </VBox>
             </children>
         </Pane>
-        <StackPane fx:id="loadingPane" visible="false" style="-fx-background-color: rgba(0, 0, 0, 0.5);">
-            <VBox alignment="CENTER" spacing="10">
-                <ProgressIndicator />
-                <Label text="Generando gráfico..." textFill="WHITE"/>
-            </VBox>
-        </StackPane>
     </children>
 </StackPane>
