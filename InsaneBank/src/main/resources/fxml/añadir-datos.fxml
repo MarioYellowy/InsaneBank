@@ -10,7 +10,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<StackPane prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.insanebank.controller.AñadirDatosController">
+<?import javafx.scene.control.ProgressIndicator?>
+<StackPane fx:id="mainStackPane" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.insanebank.controller.AñadirDatosController">
     <children>
         <Pane>
             <children>
@@ -46,5 +47,12 @@
                 </VBox>
             </children>
         </Pane>
+        <StackPane fx:id="loadingPane" visible="false" alignment="CENTER" prefWidth="400.0" prefHeight="600.0">
+            <ProgressIndicator />
+        </StackPane>
+        <StackPane fx:id="chartContainer" prefWidth="400.0" prefHeight="300.0" mouseTransparent="true"/>
     </children>
 </StackPane>
+
+
+

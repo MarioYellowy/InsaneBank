@@ -11,11 +11,12 @@ module com.insane.config {
     requires com.almasb.fxgl.all;
 
     requires java.sql;
-    requires java.desktop;
     requires io.github.cdimascio.dotenv.java;
 
     requires spring.context;
     requires jbcrypt;
+    requires org.jfree.jfreechart;
+    requires javafx.swing;
 
     exports com.insanebank;
     exports com.insanebank.controller;
