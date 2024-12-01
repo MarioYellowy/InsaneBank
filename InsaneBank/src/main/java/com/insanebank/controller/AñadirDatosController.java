@@ -71,27 +71,38 @@ public class AñadirDatosController {
         }
     }
 
-    private LineChart<Number, Number> crearGrafico(BigDecimal montoInicial, BigDecimal tasaInflacion, int años) {
+    private LineChart<Number, Number> crearGrafico(BigDecimal montoInicial, BigDecimal tasaInteres, int años) {
         NumberAxis xAxis = new NumberAxis(0, años, 1);
         NumberAxis yAxis = new NumberAxis();
         xAxis.setLabel("Años");
         yAxis.setLabel("Monto");
 
         LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
-        lineChart.setTitle("Proyección de Monto Ajustado por Inflación");
+        lineChart.setTitle("Proyección de Crecimiento del Saldo");
 
-        XYChart.Series<Number, Number> series = new XYChart.Series<>();
-        series.setName("Monto Ajustado");
+        XYChart.Series<Number, Number> seriesCrecimiento = new XYChart.Series<>();
+        seriesCrecimiento.setName("Saldo");
+
+        XYChart.Series<Number, Number> seriesTasaCambio = new XYChart.Series<>();
+        seriesTasaCambio.setName("Tasa de Cambio (Derivada)");
 
         BigDecimal montoActual = montoInicial;
-        BigDecimal tasaInflacionDecimal = tasaInflacion.divide(new BigDecimal("100"), 4, RoundingMode.HALF_UP);
+        BigDecimal tasaInteresDecimal = tasaInteres.divide(new BigDecimal("100"), 4, RoundingMode.HALF_UP);
+        BigDecimal montoAnterior = BigDecimal.ZERO;
 
         for (int i = 0; i <= años; i++) {
-            series.getData().add(new XYChart.Data<>(i, montoActual.doubleValue()));
-            montoActual = montoActual.multiply(BigDecimal.ONE.add(tasaInflacionDecimal)).setScale(2, RoundingMode.HALF_UP);
+            seriesCrecimiento.getData().add(new XYChart.Data<>(i, montoActual.doubleValue()));
+
+            if (i > 0) {
+                BigDecimal tasaCambio = montoActual.subtract(montoAnterior);
+                seriesTasaCambio.getData().add(new XYChart.Data<>(i, tasaCambio.doubleValue()));
+            }
+
+            montoAnterior = montoActual;
+            montoActual = montoActual.multiply(BigDecimal.ONE.add(tasaInteresDecimal)).setScale(2, RoundingMode.HALF_UP);
         }
 
-        lineChart.getData().add(series);
+        lineChart.getData().addAll(seriesCrecimiento, seriesTasaCambio);
         return lineChart;
     }
 
@@ -114,7 +125,7 @@ public class AñadirDatosController {
 
             BigDecimal tasaInflacionDecimal = new BigDecimal(tasaInflacion);
             if (tasaInflacionDecimal.compareTo(BigDecimal.ZERO) < 0 || tasaInflacionDecimal.compareTo(new BigDecimal("100")) > 0) {
-                mostrarMensaje("La tasa de inflación debe estar entre 0 y 100.");
+                mostrarMensaje("La tasa de interés debe estar entre 0 y 100.");
                 return false;
             }
 
