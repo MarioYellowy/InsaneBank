@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import javafx.application.Platform;
 import javafx.embed.swing.SwingNode;
 
+import java.awt.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -111,6 +112,20 @@ public class AñadirDatosController {
                 true,
                 false
         );
+
+        chart.getTitle().setFont(new Font("Yu Gothic Regular", Font.BOLD, 18));
+        chart.getTitle().setPaint(Color.decode("#FFFFFF"));
+        chart.getCategoryPlot().getDomainAxis().setLabelFont(new Font("Yu Gothic Regular", Font.PLAIN, 14));
+        chart.getCategoryPlot().getDomainAxis().setTickLabelFont(new Font("Yu Gothic Regular", Font.ITALIC, 12));
+        chart.getCategoryPlot().getRangeAxis().setLabelFont(new Font("Yu Gothic Regular", Font.BOLD, 14));
+        chart.getCategoryPlot().getRangeAxis().setTickLabelFont(new Font("Yu Gothic Regular", Font.PLAIN, 12));
+        chart.setBackgroundPaint(Color.BLACK);
+        chart.getPlot().setBackgroundPaint(Color.WHITE);
+        chart.getCategoryPlot().getDomainAxis().setLabelPaint(Color.WHITE);
+        chart.getCategoryPlot().getDomainAxis().setTickLabelPaint(Color.WHITE);
+        chart.getCategoryPlot().getRangeAxis().setLabelPaint(Color.WHITE);
+        chart.getCategoryPlot().getRangeAxis().setTickLabelPaint(Color.WHITE);
+
 
         return chart;
     }

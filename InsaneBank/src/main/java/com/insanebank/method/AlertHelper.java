@@ -21,13 +21,13 @@ public class AlertHelper {
         // Crear el fondo personalizado
         Pane root = new Pane();
         root.setStyle(
-                "-fx-background-size: cover;" + "-fx-background-color: black;"
+                "-fx-background-size: cover;" + "-fx-background-color: #0a4e5a;"
                 );
 
         // Título de la alerta
         Label alertTitle = new Label(title);
         alertTitle.setFont(new Font("Yu Gothic UI Semibold", 20));
-        alertTitle.setStyle("-fx-text-fill: red;");
+        alertTitle.setStyle("-fx-text-fill: white;");
         alertTitle.setLayoutX(38);
         alertTitle.setLayoutY(75);
 
@@ -43,7 +43,7 @@ public class AlertHelper {
         // Botón de cierre
         Button closeButton = new Button(buttonText);
         closeButton.setFont(new Font("Yu Gothic UI Semibold", 25));
-        closeButton.setStyle("-fx-background-color: #344660E5; -fx-text-fill: white;");
+        closeButton.setStyle("-fx-background-color: White; -fx-text-fill: #344660E5;");
         closeButton.setPrefSize(210, 40);
         closeButton.setLayoutX(280);
         closeButton.setLayoutY(290);
