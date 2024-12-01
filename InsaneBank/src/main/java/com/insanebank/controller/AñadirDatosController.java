@@ -6,11 +6,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.springframework.stereotype.Controller;
 import javafx.application.Platform;
+import javafx.embed.swing.SwingNode;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -31,6 +34,9 @@ public class AñadirDatosController {
     private Label mensajeErrorLabel;
 
     @FXML
+    private Button cancelarButton;
+
+    @FXML
     private Button generarGraficoButton;
 
     @FXML
@@ -41,69 +47,81 @@ public class AñadirDatosController {
 
     @FXML
     private void generarGrafico() {
-        if (validarCampos()) {
-            BigDecimal monto = new BigDecimal(montoTextField.getText());
-            BigDecimal tasaInflacion = new BigDecimal(tasaInflacionTextField.getText());
-            int tiempoEstimado = Integer.parseInt(tiempoEstimadoTextField.getText());
+        if (!validarCampos()) return; // Verifica los campos antes de continuar
 
-            // Mostrar la animación de carga
-            loadingPane.setVisible(true);
-            generarGraficoButton.setDisable(true);
+        // Mostrar el loadingPane solo cuando se necesite
+        loadingPane.setVisible(true);
 
-            // Generar el gráfico en un hilo separado
-            new Thread(() -> {
-                LineChart<Number, Number> lineChart = crearGrafico(monto, tasaInflacion, tiempoEstimado);
+        // Deshabilitar campos de texto y botones mientras se procesa
+        montoTextField.setDisable(true);
+        tasaInflacionTextField.setDisable(true);
+        tiempoEstimadoTextField.setDisable(true);
+        generarGraficoButton.setDisable(true);
+        cancelarButton.setDisable(true);
 
-                // Actualizar la UI en el hilo de JavaFX
+        // Simular la tarea de generar el gráfico (puedes reemplazar esto con tu lógica)
+        new Thread(() -> {
+            try {
+                // Simula el tiempo de generación del gráfico
+                Thread.sleep(3000);  // Simula 3 segundos de carga
+
                 Platform.runLater(() -> {
-                    loadingPane.setVisible(false);
-                    generarGraficoButton.setDisable(false);
+                    // Generar el gráfico con los valores ingresados
+                    BigDecimal monto = new BigDecimal(montoTextField.getText());
+                    BigDecimal tasa = new BigDecimal(tasaInflacionTextField.getText());
+                    int tiempo = Integer.parseInt(tiempoEstimadoTextField.getText());
 
-                    if (lineChart != null) {
-                        chartContainer.getChildren().clear();
-                        chartContainer.getChildren().add(lineChart);
-                        mostrarMensaje("Gráfico generado correctamente.");
-                    } else {
-                        mostrarMensaje("Error al generar el gráfico. Por favor, intente nuevamente.");
-                    }
+                    // Crear el gráfico
+                    JFreeChart chart = crearGrafico(monto, tasa, tiempo);
+
+                    // Crear un SwingNode para mostrar el gráfico
+                    SwingNode swingNode = new SwingNode();
+                    swingNode.setContent(new ChartPanel(chart));
+
+                    // Limpiar el contenedor y agregar el gráfico
+                    chartContainer.getChildren().clear();
+                    chartContainer.getChildren().add(swingNode);
+
+                    // Ocultar el loadingPane
+                    loadingPane.setVisible(false);
+
+                    // Habilitar los campos de entrada y botones nuevamente
+                    montoTextField.setDisable(false);
+                    tasaInflacionTextField.setDisable(false);
+                    tiempoEstimadoTextField.setDisable(false);
+                    generarGraficoButton.setDisable(false);
+                    cancelarButton.setDisable(false);
                 });
-            }).start();
-        }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 
-    private LineChart<Number, Number> crearGrafico(BigDecimal montoInicial, BigDecimal tasaInteres, int años) {
-        NumberAxis xAxis = new NumberAxis(0, años, 1);
-        NumberAxis yAxis = new NumberAxis();
-        xAxis.setLabel("Años");
-        yAxis.setLabel("Monto");
 
-        LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
-        lineChart.setTitle("Proyección de Crecimiento del Saldo");
-
-        XYChart.Series<Number, Number> seriesCrecimiento = new XYChart.Series<>();
-        seriesCrecimiento.setName("Saldo");
-
-        XYChart.Series<Number, Number> seriesTasaCambio = new XYChart.Series<>();
-        seriesTasaCambio.setName("Tasa de Cambio (Derivada)");
+    private JFreeChart crearGrafico(BigDecimal montoInicial, BigDecimal tasaInteres, int años) {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
         BigDecimal montoActual = montoInicial;
         BigDecimal tasaInteresDecimal = tasaInteres.divide(new BigDecimal("100"), 4, RoundingMode.HALF_UP);
-        BigDecimal montoAnterior = BigDecimal.ZERO;
 
         for (int i = 0; i <= años; i++) {
-            seriesCrecimiento.getData().add(new XYChart.Data<>(i, montoActual.doubleValue()));
-
-            if (i > 0) {
-                BigDecimal tasaCambio = montoActual.subtract(montoAnterior);
-                seriesTasaCambio.getData().add(new XYChart.Data<>(i, tasaCambio.doubleValue()));
-            }
-
-            montoAnterior = montoActual;
+            dataset.addValue(montoActual.doubleValue(), "Saldo", String.valueOf(i));
             montoActual = montoActual.multiply(BigDecimal.ONE.add(tasaInteresDecimal)).setScale(2, RoundingMode.HALF_UP);
         }
 
-        lineChart.getData().addAll(seriesCrecimiento, seriesTasaCambio);
-        return lineChart;
+        JFreeChart chart = ChartFactory.createLineChart(
+                "Proyección de Crecimiento del Saldo",
+                "Años",
+                "Monto",
+                dataset,
+                PlotOrientation.VERTICAL,
+                true,
+                true,
+                false
+        );
+
+        return chart;
     }
 
     private boolean validarCampos() {
