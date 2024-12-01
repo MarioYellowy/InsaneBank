@@ -1,4 +1,4 @@
-package Conexion;
+package com.insanebank.Conexion;
 
 import io.github.cdimascio.dotenv.Dotenv;
 

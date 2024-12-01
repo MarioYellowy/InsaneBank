@@ -1,6 +1,6 @@
 package com.insanebank.controller;
 
-import Conexion.Conexion;
+import com.insanebank.Conexion.Conexion;
 import com.insanebank.method.AlertHelper;
 import com.insanebank.method.Validacion;
 import javafx.animation.ScaleTransition;
