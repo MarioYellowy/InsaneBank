@@ -47,45 +47,36 @@ public class AñadirDatosController {
 
     @FXML
     private void generarGrafico() {
-        if (!validarCampos()) return; // Verifica los campos antes de continuar
+        if (!validarCampos()) return;
 
-        // Mostrar el loadingPane solo cuando se necesite
         loadingPane.setVisible(true);
 
-        // Deshabilitar campos de texto y botones mientras se procesa
         montoTextField.setDisable(true);
         tasaInflacionTextField.setDisable(true);
         tiempoEstimadoTextField.setDisable(true);
         generarGraficoButton.setDisable(true);
         cancelarButton.setDisable(true);
 
-        // Simular la tarea de generar el gráfico (puedes reemplazar esto con tu lógica)
         new Thread(() -> {
             try {
-                // Simula el tiempo de generación del gráfico
-                Thread.sleep(3000);  // Simula 3 segundos de carga
+
+                Thread.sleep(3000);
 
                 Platform.runLater(() -> {
-                    // Generar el gráfico con los valores ingresados
                     BigDecimal monto = new BigDecimal(montoTextField.getText());
                     BigDecimal tasa = new BigDecimal(tasaInflacionTextField.getText());
                     int tiempo = Integer.parseInt(tiempoEstimadoTextField.getText());
 
-                    // Crear el gráfico
                     JFreeChart chart = crearGrafico(monto, tasa, tiempo);
 
-                    // Crear un SwingNode para mostrar el gráfico
                     SwingNode swingNode = new SwingNode();
                     swingNode.setContent(new ChartPanel(chart));
 
-                    // Limpiar el contenedor y agregar el gráfico
                     chartContainer.getChildren().clear();
                     chartContainer.getChildren().add(swingNode);
 
-                    // Ocultar el loadingPane
                     loadingPane.setVisible(false);
 
-                    // Habilitar los campos de entrada y botones nuevamente
                     montoTextField.setDisable(false);
                     tasaInflacionTextField.setDisable(false);
                     tiempoEstimadoTextField.setDisable(false);
